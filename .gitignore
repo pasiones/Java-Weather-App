@@ -1,0 +1,6 @@
+/WeatherApp/target/
+*.json
+*.txt
+/WeatherApp/nbproject/
+/WeatherApp/.idea/
+!log.txt

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane fitToHeight="true" fitToWidth="true" minHeight="735.0" minWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.tuni.prog3.weatherapp.PrimaryController">
+   <content>
+      <AnchorPane>
+         <children>
+            <VBox fx:id="mainVBox" alignment="TOP_CENTER" spacing="20.0" style="-fx-background-color: #1F282D;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <HBox>
+                     <children>
+                        <Button id="searchBtn" fx:id="searchBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#searchBtnHandler" style="-fx-border-color: transparent; -fx-border-width: 0; -fx-background-color: transparent; -fx-background-insets: 0; -fx-background-radius: 0; -fx-padding: 0;" text="Button">
+                           <graphic>
+                              <ImageView fitHeight="150.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/search_200941.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="2.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="searchTxt" minHeight="42.0" onKeyPressed="#handleKeyPress" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <ToggleButton fx:id="favToggleButton" mnemonicParsing="false" onAction="#favButtonHandler" text="ToggleButton" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label fx:id="cityLabel" alignment="CENTER" text="City Name" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button fx:id="primaryButton" onAction="#switchToSecondary" text="History and Favourites" />
+                     </children>
+                  </HBox>
+                  <VBox id="topBox" fx:id="curWeatherVbox" prefHeight="196.0" spacing="10.0" style="-fx-background-color: #274e66; -fx-background-radius: 10;">
+                     <children>
+                        <HBox fx:id="labeHbox" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <Label id="currentWeather" text="Current Weather" textFill="#f7fbff">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="unitButton" mnemonicParsing="false" onAction="#unitButtonHandler" style="-fx-background-radius: 5; -fx-background-color: #1F282D;" text=" °C" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox id="mainWeather" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="currentWeatherIcon" fitHeight="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/01d.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="currentTempLb" text="50" textFill="WHITE">
+                                 <font>
+                                    <Font size="50.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                              <VBox prefHeight="200.0" prefWidth="200.0" HBox.hgrow="NEVER">
+                                 <children>
+                                    <HBox id="feelLike" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Label text="Feels like: " textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="feelLikeLb" text="-10" textFill="#f7fbff">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox id="otherBox" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <HBox id="airQual" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Visibility: " textFill="#f7fbff">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="visibilityLB" text="Good" textFill="#f7fbff">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <HBox.margin>
+                                    <Insets left="-10.0" />
+                                 </HBox.margin>
+                              </HBox>
+                              <HBox id="humid" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Humidity:" textFill="#f7fbff">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="humidLb" text=" 0.0" textFill="#f7fbff">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox id="wind" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Wind: " textFill="#f7fbff">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="windLb" text=" 3" textFill="#f7fbff">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <HBox fx:id="weeklyHbox" alignment="CENTER" minHeight="200.0" prefHeight="200.0" spacing="10.0" style="-fx-background-radius: 10;">
+                     <children>
+                        <VBox fx:id="day0VBox" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="25.0" style="-fx-background-color: #274e66; -fx-background-radius: 10;" HBox.hgrow="ALWAYS" />
+                        <VBox fx:id="day1VBox" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="25.0" style="-fx-background-color: #274e66; -fx-background-radius: 10;" HBox.hgrow="ALWAYS" />
+                        <VBox fx:id="day2VBox" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="25.0" style="-fx-background-color: #274e66; -fx-background-radius: 10;" HBox.hgrow="ALWAYS" />
+                        <VBox fx:id="day3VBox" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="25.0" style="-fx-background-color: #274e66; -fx-background-radius: 10;" HBox.hgrow="ALWAYS" />
+                        <VBox fx:id="day4VBox" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="25.0" style="-fx-background-color: #274e66; -fx-background-radius: 10;" HBox.hgrow="ALWAYS" />
+                        <VBox fx:id="day5VBox" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="25.0" style="-fx-background-color: #274e66; -fx-background-radius: 10;" HBox.hgrow="ALWAYS" />
+                        <VBox fx:id="day6VBox" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="25.0" style="-fx-background-color: #274e66; -fx-background-radius: 10;" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <ScrollPane fx:id="hourlyScrollPane" fitToHeight="true" hbarPolicy="ALWAYS" minHeight="200.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@cssFiles/scrollPanInvis.css" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+                     <content>
+                        <HBox fx:id="hourlyHBox" minHeight="100.0" minWidth="200.0" spacing="10.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

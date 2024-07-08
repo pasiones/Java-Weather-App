@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"fi.tuni.prog3.weatherapp","l":"App"},{"p":"fi.tuni.prog3.weatherapp","l":"DataModel"},{"p":"fi.tuni.prog3.weatherapp","l":"PrimaryController"},{"p":"fi.tuni.prog3.weatherapp","l":"SecondaryController"}];updateSearchResults();

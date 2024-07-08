@@ -1,0 +1,12 @@
+.white-text Label, .white-text Text {
+    -fx-text-fill: white;
+	-fx-font-size: 14px; /* Specify the font size */
+}
+
+.rounded-vbox {
+    -fx-background-color: #274e66; /* Set background color */
+    -fx-background-radius: 10px; /* Set the radius of the rounded corners */
+    -fx-spacing: 10px; /* Add padding to ensure the background covers the entire area */
+	
+}
+
