@@ -1,12 +1,12 @@
 package fi.tuni.prog3.functionality;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-
+import io.github.cdimascio.dotenv.Dotenv;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
+import java.net.URLEncoder;
 
 /**
  * OpenWeatherAPI is a class that provides methods for accessing weather data
@@ -22,7 +22,8 @@ import java.net.URL;
  * @see iAPI
  */
 public class OpenWeatherAPI implements iAPI {
-    private static final String API_KEY = "dbccf4cd252c7cdfb6bf16f4794c372d";
+    Dotenv dotenv = Dotenv.load();
+    private final String API_KEY = dotenv.get("OPENWEATHER_API_KEY");
     
     /**
      * Constructs a new OpenWeatherAPI instance.
@@ -40,8 +41,9 @@ public class OpenWeatherAPI implements iAPI {
     @Override
     public Double[] lookUpLocation(String loc) throws IOException {
         Double[] LatAndLon = new Double[2];
+        String encodedCity = URLEncoder.encode(loc, "UTF-8");
         String apiUrl = String.format("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s",
-                loc, API_KEY);
+                encodedCity, API_KEY);
         URL url = new URL(apiUrl);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");

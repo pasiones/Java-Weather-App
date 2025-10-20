@@ -5,4 +5,5 @@ module fi.tuni.progthree.weatherapp {
     opens fi.tuni.prog3.weatherapp to javafx.fxml;
     exports fi.tuni.prog3.weatherapp;
     requires com.google.gson;
+    requires java.dotenv;
 }

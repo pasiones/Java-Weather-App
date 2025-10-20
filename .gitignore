@@ -4,3 +4,4 @@
 /WeatherApp/nbproject/
 /WeatherApp/.idea/
 !log.txt
+/WeatherApp/.env
